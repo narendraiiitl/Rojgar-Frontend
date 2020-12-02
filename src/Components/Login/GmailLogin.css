@@ -1,0 +1,26 @@
+.gsec {
+  width: 80%;
+  display: flex;
+  border: 1px solid rgb(66, 133, 244);
+  flex-direction: row;
+  background-color: rgb(66, 133, 244);
+  border-radius: 2px;
+}
+.gsec1 {
+  width: 22px;
+  background-color: white;
+  border-radius: 1px;
+  padding: 7px 8.5px;
+}
+.gsec1 img {
+  width: 100%;
+  transform: translateY(2px);
+}
+.gsec2 {
+  width: calc(100% - 25px);
+  text-align: center;
+  align-self: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.82em;
+}

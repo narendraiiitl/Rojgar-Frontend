@@ -1,6 +1,27 @@
+import { Route, Switch } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Login from './Components/Login/Loginform';
+// import Signup from './Signup';
 function App() {
   return (
-    <h1>this is withour react </h1>
+    <Route
+      render={({ location }) => (
+        <TransitionGroup>
+          <CSSTransition key={location.key} classNames="page" timeout={500}>
+            <Switch location={location}>
+              {/* <Route exact path="/l" render={(routeProps) => <Home />} /> */}
+              <Route exact path="/" render={(routeProps) => <Login />} />
+              {/* <Route exact path="/signup" render={(routeProps) => <Signup />} /> */}
+              {/* <Route
+                exact
+                path="/dashboard"
+                render={(routeProps) => <Page></Page>}
+              /> */}
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
+      )}
+    />
   );
 }
 

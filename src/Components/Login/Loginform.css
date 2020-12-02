@@ -1,0 +1,25 @@
+.login_cover{
+    border:1px solid red;
+    display: flex;
+    min-height: 90%;
+    flex-direction: row;
+}
+.login_section1{
+    border:1px solid red;
+    width: 30%;
+}
+.login_section2{
+    border:1px solid red;
+    width: 70%;
+    min-height: 100%;
+}
+.login_cover{
+    border:1px solid red;
+}
+.login_cover{
+    border:1px solid red;
+}
+.login_heading{
+    font-size:2px;
+    color: aqua;
+}
