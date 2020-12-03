@@ -1,10 +1,10 @@
 import React from 'react'
-
-export default function LoginInput() {
+import './LoginInput.css'
+export default function LoginInput({name}) {
     return (
-        <div>
-            <div className="login_label">Email Address</div>
-            <input className="login_input" placeholder="Email"></input>
+        <div className="input_cover">
+            <div className="login_label">{name}</div>
+            <input className="login_input" ></input>
         </div>
     )
 }

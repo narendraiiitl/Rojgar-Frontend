@@ -1,25 +1,80 @@
-.login_cover{
-    border:1px solid red;
-    display: flex;
-    min-height: 90%;
-    flex-direction: row;
+.login_cover {
+  display: flex;
+  min-height: 90%;
+  flex-direction: row;
 }
-.login_section1{
-    border:1px solid red;
-    width: 30%;
+.login_section1 {
+  width: 30%;
 }
-.login_section2{
-    border:1px solid red;
-    width: 70%;
-    min-height: 100%;
+.login_logo {
+  padding: 0 10%;
+  padding-top: 50px;
 }
-.login_cover{
-    border:1px solid red;
+.login_logo img {
+  width: 150px;
 }
-.login_cover{
-    border:1px solid red;
+.login_section2 {
+  border: 1px solid red;
+  width: 70%;
+  min-height: 100vh;
 }
-.login_heading{
-    font-size:2px;
-    color: aqua;
+.login_section2 img{
+    
+}
+.login_heading {
+  font-size: 1.7em;
+  line-height: 2.8em;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-left: 10%;
+  color: rgb(33, 49, 60);
+}
+.login_or {
+  margin: 20px 0;
+  margin-bottom: 16px;
+  position: relative;
+  text-align: center;
+}
+.login_or span {
+  background-color: white;
+  font-size: 0.9em;
+  padding: 0 10px;
+  color: rgb(93, 108, 116);
+}
+.login_or:before {
+  display: inline-block;
+  border-top: 1px solid rgb(184, 196, 194);
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  height: 0;
+  width: 80%;
+  inset: 50% 0 0;
+  z-index: -1;
+  transform: translateY(-50%);
+}
+.login_submit {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.login_submit button {
+  font-size: 1em;
+  color: rgb(180, 179, 179);
+  font-weight: 400;
+  border: 1px solid rgb(184, 196, 194);
+  border-radius: 3px;
+  padding: 5px 20px;
+}
+.login_submit span {
+  font-size: 0.9em;
+  color: rgb(105, 105, 105);
+  font-weight: 500;
+}
+.login_change {
+  color: rgb(0, 124, 173) !important;
 }

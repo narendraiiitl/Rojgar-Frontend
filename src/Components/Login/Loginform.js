@@ -11,13 +11,14 @@ export default function Loginform() {
         <div className="login_logo">
           <img src={Logo} alt="logo of the rojgar app"></img>
         </div>
-        <div calssName="login_heading">Log in to your account</div>
+        <div className="login_heading">Log in to your account</div>
         <GmailLogin />
-        <div calssName="login_or">or</div>
-        <LoginInput />
-        <div calssName="login_submit">
+        <div className="login_or"><span>or</span></div>
+        <LoginInput name="Email Address" />
+        <LoginInput name="Password" />
+        <div className="login_submit">
             <button>Login</button>
-            <span>Don't have an account?<span className="login_change">Sign Up</span></span>
+            <span>Don't have an account?<span className="login_change">&nbsp;Sign Up</span></span>
         </div>
       </div>
       <div className="login_section2">
