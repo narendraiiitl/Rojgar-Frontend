@@ -5,6 +5,7 @@
 }
 .login_section1 {
   width: 30%;
+  min-height: 100vh;
 }
 .login_logo {
   padding: 0 10%;
@@ -14,12 +15,17 @@
   width: 150px;
 }
 .login_section2 {
-  border: 1px solid red;
+  background-image: linear-gradient(
+      to top,
+      rgba(40, 40, 41, 0.822),
+      rgba(46, 49, 65, 0.822)
+    ),
+    url(../../Assets/Images/workerimage.jpg);
+  background-size: cover;
   width: 70%;
   min-height: 100vh;
-}
-.login_section2 img{
-    
+  padding: 6em 7em;
+  box-sizing: border-box;
 }
 .login_heading {
   font-size: 1.7em;
@@ -57,6 +63,7 @@
   width: 80%;
   margin: 0 auto;
   margin-top: 2em;
+  font-size: 0.9em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -70,11 +77,37 @@
   border-radius: 3px;
   padding: 5px 20px;
 }
+.login_submit button:focus {
+ outline: none;
+}
 .login_submit span {
   font-size: 0.9em;
   color: rgb(105, 105, 105);
   font-weight: 500;
+ 
 }
 .login_change {
   color: rgb(0, 124, 173) !important;
+  cursor: pointer;
+}
+.tag_1 {
+  font-size: 2rem;
+  line-height: 1.2em;
+  color: white;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+}
+.tag_content_1 {
+  font-size: 1.2rem;
+  line-height: 1.1em;
+  color: rgb(216, 216, 216);
+  font-weight: 400;
+  margin-bottom: 12em;
+}
+.join_now1 {
+  font-size: 1.2rem;
+  line-height: 1.1em;
+  color: rgb(216, 216, 216);
+  font-weight: 400;
+  width: max-content;
 }

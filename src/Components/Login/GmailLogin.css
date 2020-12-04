@@ -6,6 +6,7 @@
   background-color: rgb(66, 133, 244);
   border-radius: 2px;
   margin: 0 auto;
+  cursor: pointer;
 }
 .gsec1 {
   width: 22px;
