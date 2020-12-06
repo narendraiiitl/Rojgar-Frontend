@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Loginform.css";
 import Logo from "../../Assets/Logo/rojgar.png";
 import LoginInput from "./LoginInput";
@@ -11,7 +11,7 @@ import axios from "axios";
 import Cookie from "universal-cookie";
 import { Alert } from "reactstrap";
 const cookie = new Cookie();
-function submitForm(email, password, setAlertVisible, history) {
+function submitForm(email, password, setAlertVisible, history, btnRef) {
   axios
     .post(`http://localhost:3001/auth/register`, { email, password })
     .then((res) => {
@@ -23,6 +23,9 @@ function submitForm(email, password, setAlertVisible, history) {
     .catch(function (error) {
       if (error.response) {
         console.log(error.response.status);
+      }
+      if (btnRef.current) {
+        btnRef.current.setAttribute("disabled", "false");
       }
       console.log(error);
       setAlertVisible();
@@ -38,6 +41,7 @@ function Loginform(props) {
   const [alertVisible, setAlertVisible] = useToggle(false);
   let login = true;
   let history = useHistory();
+  let btnRef = useRef();
   const [loginMode, setLoginMode] = useToggle(true);
   if (!(email && password)) {
     login = false;
@@ -67,10 +71,11 @@ function Loginform(props) {
 
         <div className="login_submit">
           <button
+            ref={btnRef}
             className={login ? "greenactive" : ""}
             disabled={!login}
             onClick={() =>
-              submitForm(email, password, setAlertVisible, history)
+              submitForm(email, password, setAlertVisible, history, btnRef)
             }
           >
             {!loginMode ? "Sign Up" : "Log In"}
