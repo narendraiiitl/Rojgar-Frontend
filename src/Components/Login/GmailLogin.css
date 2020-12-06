@@ -9,14 +9,13 @@
   cursor: pointer;
 }
 .gsec1 {
-  width: 22px;
+  width: 38px;
   background-color: white;
   border-radius: 1px;
   padding: 7px 8.5px;
 }
 .gsec1 img {
   width: 100%;
-  transform: translateY(2px);
 }
 .gsec2 {
   width: calc(100% - 25px);

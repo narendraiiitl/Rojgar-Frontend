@@ -75,7 +75,7 @@
   font-weight: 400;
   border: 1px solid rgb(184, 196, 194);
   border-radius: 3px;
-  padding: 5px 20px;
+  padding: 5px 15px;
 }
 .login_submit button:focus {
  outline: none;
@@ -85,6 +85,10 @@
   color: rgb(105, 105, 105);
   font-weight: 500;
  
+}
+.greenactive{
+  background-color: rgb(3, 146, 50);
+  color: white !important;
 }
 .login_change {
   color: rgb(0, 124, 173) !important;
@@ -110,4 +114,11 @@
   color: rgb(216, 216, 216);
   font-weight: 400;
   width: max-content;
+}
+.alert_1{
+  margin-top:.5em;
+  margin-bottom: -.5em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
