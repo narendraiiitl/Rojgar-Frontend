@@ -10,6 +10,9 @@
   width: 100%;
   background-color:rgb(66, 133, 244) !important;
 }
+.gsec_1:focus{
+  outline: none !important;
+}
 .gsec_1 span{
   width: 100%;
   color: white !important;

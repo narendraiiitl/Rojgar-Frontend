@@ -11,7 +11,7 @@ import axios from "axios";
 import Cookie from "universal-cookie";
 import { Alert } from "reactstrap";
 const cookie = new Cookie();
-function submitForm(email, password, setAlertVisible, history, btnRef) {
+function submitForm(email, password, setAlertVisible, history) {
   axios
     .post(`http://localhost:3001/auth/register`, { email, password })
     .then((res) => {
@@ -23,9 +23,6 @@ function submitForm(email, password, setAlertVisible, history, btnRef) {
     .catch(function (error) {
       if (error.response) {
         console.log(error.response.status);
-      }
-      if (btnRef.current) {
-        btnRef.current.setAttribute("disabled", "false");
       }
       console.log(error);
       setAlertVisible();
@@ -75,7 +72,7 @@ function Loginform(props) {
             className={login ? "greenactive" : ""}
             disabled={!login}
             onClick={() =>
-              submitForm(email, password, setAlertVisible, history, btnRef)
+              submitForm(email, password, setAlertVisible, history)
             }
           >
             {!loginMode ? "Sign Up" : "Log In"}
@@ -90,13 +87,14 @@ function Loginform(props) {
       </div>
       <div className="login_section2">
         <div className="tag_1">
-          Get Your Job Done <br></br> By The Professionals.
+          Get Your Job Done <br></br> By The Rojgarites.
         </div>
         <div className="tag_content_1">
-          Book Online workers for the several <br></br>job types who are honest
-          and hard<br></br>working at your finger tips.
+          Book your appointment with our <br></br> amazing Rojgarite at the
+          comfort
+          <br></br> of your home and relax, it is that simple!
         </div>
-        <span className="join_now1">Become a Professional &nbsp;</span>
+        <span className="join_now1">Become a Rojgarite &nbsp;</span>
         <FiArrowRight />
       </div>
     </div>
