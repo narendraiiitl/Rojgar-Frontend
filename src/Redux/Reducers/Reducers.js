@@ -1,17 +1,29 @@
 import {
-    UPDATE_USERNAME
+    UPDATE_USERNAME,
+    UPDATE_AUTHENTICATION
     // CHANGE_SEARCH_FIELD,
     // REQUEST_ROBOTS_PENDING,
     // REQUEST_ROBOTS_SUCCESS,
     // REQUEST_ROBOTS_FAILED
-} from './constants.js'
+} from './Constants'
 const initialUsername = {
     username: ''
+}
+const initialAuth = {
+    authenticated: false
 }
 export const updateUsername = (state = initialUsername, action = {}) => {
     switch (action.type) {
         case UPDATE_USERNAME:
             return Object.assign({}, state, { username: action.payload })
+        default:
+            return state;
+    }
+}
+export const updateAuthentication = (state = initialAuth, action = {}) => {
+    switch (action.type) {
+        case UPDATE_AUTHENTICATION:
+            return Object.assign({}, state, { authenticated: action.payload })
         default:
             return state;
     }

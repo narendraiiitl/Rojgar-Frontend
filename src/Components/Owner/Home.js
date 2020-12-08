@@ -1,10 +1,36 @@
-import React from 'react'
-
-function Home() {
-    return (
-        <div>
-            this is home page
-        </div>
-    )
+import React, { useEffect,useState } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+import Cookie from "universal-cookie";
+import Dashboard from "./Dashboard";
+const cookie = new Cookie();
+function Home(props) {
+  const[auth,setAuth] = useState(false);
+  console.log(props);
+  useEffect(() => {
+    const token = cookie.get("accessToken");
+    console.log(token)
+    let url = "http://localhost:3001/api/user";
+    axios
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setAuth(true);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.status);
+        }
+        setAuth(false);
+      });
+  });
+  return !props.authenticated? (
+    <Redirect to={{ pathname: "/" }} />
+  ) : (
+    <Dashboard  auth={auth}/>
+  );
 }
 export default Home;

@@ -5,7 +5,7 @@ import Cookie from "universal-cookie";
 import GoogleLogin from "react-google-login";
 import { useHistory } from "react-router-dom";
 const cookie = new Cookie();
-function GmailLogin({ loginMode }) {
+function GmailLogin(props) {
   let history = useHistory();
   const responseGoogle = (response) => {
     console.log(response);
@@ -13,10 +13,12 @@ function GmailLogin({ loginMode }) {
       .post(`http://localhost:3001/auth/frontendgoogleregister`, { response })
       .then((res) => {
         const { accessToken, refreshToken } = res.data;
+        props.updateUsername(accessToken);
+        props.updateAuth(true);
         cookie.set("accessToken", accessToken);
         cookie.set("refreshToken", refreshToken);
         history.push("/home");
-      })  
+      })
       .catch(function (error) {
         if (error.response) console.log(error.response.status);
       });
@@ -26,7 +28,7 @@ function GmailLogin({ loginMode }) {
       <GoogleLogin
         className="gsec_1"
         clientId="300135945373-cgnt5ivnbdic1voveoe6lkbu56je2pn0.apps.googleusercontent.com"
-        buttonText={`${loginMode ? "Login " : "Signup "}with Google`}
+        buttonText={`${props.loginMode ? "Login " : "Signup "}with Google`}
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
       />

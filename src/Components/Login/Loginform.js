@@ -11,11 +11,14 @@ import axios from "axios";
 import Cookie from "universal-cookie";
 import { Alert } from "reactstrap";
 const cookie = new Cookie();
-function submitForm(email, password, setAlertVisible, history) {
+function submitForm(email, password, setAlertVisible, history,props,loginMode) {
+  let url = loginMode ?  "http://localhost:3001/auth/login" :"http://localhost:3001/auth/register";
   axios
-    .post(`http://localhost:3001/auth/register`, { email, password })
+    .post(url, { email, password })
     .then((res) => {
       const { accessToken, refreshToken } = res.data;
+      props.updateUsername(accessToken);
+      props.updateAuth(true);
       cookie.set("accessToken", accessToken);
       cookie.set("refreshToken", refreshToken);
       history.push("/home");
@@ -58,7 +61,7 @@ function Loginform(props) {
           {"Email not found."}
         </Alert>
         <div className="login_heading">Log in to your account</div>
-        <GmailLogin loginMode={loginMode} />
+        <GmailLogin loginMode={loginMode} updateUsername={props.updateUsername} updateAuth={props.updateAuth} />
         <div className="login_or">
           <span>or</span>
         </div>
@@ -72,7 +75,7 @@ function Loginform(props) {
             className={login ? "greenactive" : ""}
             disabled={!login}
             onClick={() =>
-              submitForm(email, password, setAlertVisible, history)
+              submitForm(email, password, setAlertVisible, history,props,loginMode)
             }
           >
             {!loginMode ? "Sign Up" : "Log In"}

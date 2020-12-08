@@ -1,47 +1,12 @@
-/* @font-face {
-  font-family: "Aliron";
-  font-size: 800;
-  src: local("Aliron"), url(./Assets/fonts/Aileron-Black.otf) format("opentype");
-}
-@font-face {
-  font-family: "Aliron";
-  font-size: 700;
-  src: local("Aliron"), url(./Assets/fonts/Aileron-Bold.otf) format("opentype");
-}
-@font-face {
-  font-family: "Aliron";
-  font-size: 600;
-  src: local("Aliron"), url(./Assets/fonts/Aileron-Heavy.otf) format("opentype");
-}
-
-@font-face {
-  font-family: "Aliron";
-  font-weight: 500;
-  src: local("Aliron"),
-    url(./Assets/fonts/Aileron-SemiBold.otf) format("opentype");
-} */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @font-face {
   font-family: "Aliron";
   font-weight: 400;
   src: local("Aliron"),
     url(./Assets/fonts/Aileron-Regular.otf) format("opentype");
 }
-/* @font-face {
-  font-family: "Aliron";
-  font-weight: 300;
-  src: local("Aliron"), url(./Assets/fonts/Aileron-Thin.otf) format("opentype");
-}
-@font-face {
-  font-family: "Aliron";
-  font-size: 200;
-  src: local("Aliron"), url(./Assets/fonts/Aileron-Light.otf) format("opentype");
-}
-@font-face {
-  font-family: "Aliron";
-  font-weight: 100;
-  src: local("Aliron"),
-    url(./Assets/fonts/Aileron-UltraLight.otf) format("opentype");
-} */
 body {
   margin: 0;
   padding: 0;
