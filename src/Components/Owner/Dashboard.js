@@ -4,9 +4,30 @@ import Profile from "./Profile";
 import Booking from "./Booking";
 import Cart from "./Cart";
 import History from "./History";
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+const mapStateToProps = (state) => {
+  let { firstname, lastname, bio, mobile, image, pin, city, address } = state.updateProfile;
+  return {
+    firstname,
+    lastname,
+    bio,
+    mobile,
+    image,
+    pin,
+    city,
+    address,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+  };
+};
 function Dashboard(props) {
   let history = useHistory();
+  let { firstname, lastname, mobile} = props;
+  if(!firstname) firstname="newuser";  
+  if(!mobile) mobile="mobile no";  
   const { component } = props;
   let route = <Booking />;
   if (component === "profile") {
@@ -36,8 +57,8 @@ function Dashboard(props) {
                 className="h-full w-full"
               />
             </div>
-            <div className="text-sm font-semibold mt-2">Username</div>
-            <div className="text-xs text-gray-500">Mobile Number</div>
+            <div className="text-sm font-semibold mt-2">{firstname}&nbsp;{lastname}</div>
+            <div className="text-xs text-gray-500">{mobile}</div>
             <div className="flex flex-row items-center mt-3">
               <div className="flex flex-col justify-center h-4 w-8 bg-indigo-500 rounded-full">
                 <div className="h-3 w-3 bg-white rounded-full self-end mr-1"></div>
@@ -52,7 +73,7 @@ function Dashboard(props) {
                 2
               </span>
             </div>
-            <div className="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
+            <div className="flex flex-col space-y-1 mt-4 -mx-2 h-54 overflow-y-auto">
               <button
                 className="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2"
                 onClick={() => history.push("/home/profile")}
@@ -125,4 +146,4 @@ function Dashboard(props) {
     </div>
   );
 }
-export default Dashboard;
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

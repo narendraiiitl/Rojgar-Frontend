@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { setUsername, setAuthentication } from "./Redux/Actions/Actions";
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     username: state.updateUsername.username,
     authenticated: state.updateAuthentication.authenticated,

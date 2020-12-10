@@ -4,13 +4,11 @@ import { useHistory } from "react-router-dom";
 import Cookie from "universal-cookie";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setProfile} from "./Redux/Actions/Actions";
+import { setProfile } from "../../Redux/Actions/Actions";
 const cookie = new Cookie();
 
 const mapStateToProps = (state) => {
-  return {
-    
-  };
+  return {};
 };
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -27,7 +25,8 @@ function updateProfile(
   pin,
   city,
   address,
-  history
+  history,
+  props
 ) {
   let url = "http://localhost:3001/api/user/update";
   const token = cookie.get("accessToken");
@@ -37,13 +36,13 @@ function updateProfile(
       { firstname, lastname, bio, mobile, image, pin, city, address },
       {
         headers: {
-            Authorization: `Bearer ${token}`,
-          },
-      },
-   
+          Authorization: `Bearer ${token}`,
+        },
+      }
     )
     .then((res) => {
       console.log(res.data);
+      props.onProfileUpdate(res.data);
       history.push("/home");
     })
     .catch(function (error) {
@@ -124,7 +123,7 @@ function Profile(props) {
       </div>
       <div className="button-container">
         <button
-          class="button"
+          className="button"
           onClick={() =>
             updateProfile(
               firstname,
@@ -135,7 +134,8 @@ function Profile(props) {
               pin,
               city,
               address,
-              history
+              history,
+              props
             )
           }
         >

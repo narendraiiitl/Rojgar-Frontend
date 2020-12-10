@@ -1,38 +1,38 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Cookie from "universal-cookie";
 import Dashboard from "./Dashboard";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 const cookie = new Cookie();
 function Home(props) {
   let { id } = useParams();
-  const[auth,setAuth] = useState(false);
-  console.log(props);
+  const [auth, setAuth] = useState(false);
   useEffect(() => {
-    const token = cookie.get("accessToken");
-    console.log(token)
-    let url = "http://localhost:3001/api/user";
-    axios
-      .get(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setAuth(true);
-      })
-      .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.status);
-        }
-        setAuth(false);
-      });
+    if (!auth) {
+      const token = cookie.get("accessToken");
+      let url = "http://localhost:3001/api/user";
+      axios
+        .get(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })  
+        .then((res) => {
+          setAuth(true);
+        })
+        .catch(function (error) {
+          if (error.response) {
+            console.log(error.response.status);
+          }
+          setAuth(false);
+        });
+    }
   });
-  return !props.authenticated? (
+  return !props.authenticated ? (
     <Redirect to={{ pathname: "/login" }} />
   ) : (
-    <Dashboard  auth={auth} component={id}/>
+    <Dashboard auth={auth} component={id} />
   );
 }
 export default Home;
