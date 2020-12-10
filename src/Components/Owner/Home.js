@@ -3,8 +3,10 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Cookie from "universal-cookie";
 import Dashboard from "./Dashboard";
+import {useParams} from "react-router-dom";
 const cookie = new Cookie();
 function Home(props) {
+  let { id } = useParams();
   const[auth,setAuth] = useState(false);
   console.log(props);
   useEffect(() => {
@@ -28,9 +30,9 @@ function Home(props) {
       });
   });
   return !props.authenticated? (
-    <Redirect to={{ pathname: "/" }} />
+    <Redirect to={{ pathname: "/login" }} />
   ) : (
-    <Dashboard  auth={auth}/>
+    <Dashboard  auth={auth} component={id}/>
   );
 }
 export default Home;

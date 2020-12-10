@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { hot } from 'react-hot-loader'
 import Login from "./Components/Login/Loginform";
 import Home from "./Components/Owner/Home";
+import Landing from "./Components/UI Components/Landing";
 import { connect } from "react-redux";
 import { setUsername, setAuthentication } from "./Redux/Actions/Actions";
 
@@ -11,21 +11,16 @@ const mapStateToProps = (state) => {
   return {
     username: state.updateUsername.username,
     authenticated: state.updateAuthentication.authenticated,
-    // robots: state.requestRobots.robots,
-    // isPending: state.requestRobots.isPending,
-    // error: state.requestRobots.error,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     onSuccess: (text) => dispatch(setUsername(text)),
     onVerification: (text) => dispatch(setAuthentication(text)),
-    // onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-    // onRequestRobots: () => dispatch(requestRobots()),
   };
 };
 
-// import Signup from './Signup';
+
 function App(props) {
   return (
     <Route
@@ -36,11 +31,25 @@ function App(props) {
               <Route
                 exact
                 path="/home"
-                render={(routeProps) => <Home username={props.username} authenticated={props.authenticated} />}
+                render={(routeProps) => (
+                  <Home
+                    username={props.username}
+                    authenticated={props.authenticated}
+                  />
+                )}
+              />
+              <Route
+                path="/home/:id"
+                render={(routeProps) => (
+                  <Home
+                    username={props.username}
+                    authenticated={props.authenticated}
+                  />
+                )}
               />
               <Route
                 exact
-                path="/"
+                path="/login"
                 render={(routeProps) => (
                   <Login
                     updateUsername={props.onSuccess}
@@ -48,12 +57,7 @@ function App(props) {
                   />
                 )}
               />
-              {/* <Route exact path="/signup" render={(routeProps) => <Signup />} /> */}
-              {/* <Route
-                exact
-                path="/dashboard"
-                render={(routeProps) => <Page></Page>}
-              /> */}
+              <Route exact path="/" render={(routeProps) => <Landing />} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
@@ -62,4 +66,4 @@ function App(props) {
   );
 }
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);

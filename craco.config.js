@@ -1,4 +1,3 @@
-const reactHotReloadPlugin = require('craco-plugin-react-hot-reload');
 module.exports = {
     style: {
       postcss: {
@@ -8,7 +7,4 @@ module.exports = {
         ],
       },
     },
-    plugins: [{
-      plugin: reactHotReloadPlugin
-  }]
   }

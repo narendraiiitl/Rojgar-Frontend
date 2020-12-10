@@ -4,7 +4,8 @@ import {
     // REQUEST_ROBOTS_SUCCESS,
     // REQUEST_ROBOTS_FAILED
     UPDATE_USERNAME,
-    UPDATE_AUTHENTICATION
+    UPDATE_AUTHENTICATION,
+    UPDATE_PROFILE
 } from '../Reducers/Constants'
 export const setUsername = text => ({
     type: UPDATE_USERNAME,
@@ -12,6 +13,10 @@ export const setUsername = text => ({
 })
 export const setAuthentication = text => ({
     type: UPDATE_AUTHENTICATION,
+    payload: text
+})
+export const setProfile = text => ({
+    type: UPDATE_PROFILE,
     payload: text
 })
 // export const requestRobots = () => (dispatch) => {

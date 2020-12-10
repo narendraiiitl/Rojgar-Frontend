@@ -9,9 +9,9 @@ import App from "./App";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import reportWebVitals from "./reportWebVitals";
-import {updateUsername,updateAuthentication} from "./Redux/Reducers/Reducers";
+import {updateUsername,updateAuthentication,updateProfile} from "./Redux/Reducers/Reducers";
 const logger = createLogger();
-const rootReducer = combineReducers({ updateUsername,updateAuthentication});
+const rootReducer = combineReducers({ updateUsername,updateAuthentication,updateProfile});
 const store = createStore(
   rootReducer,
   applyMiddleware(thunkMiddleware, logger)
